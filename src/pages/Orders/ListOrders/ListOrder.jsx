@@ -1,7 +1,8 @@
 import Button from 'react-bootstrap/Button';
+import "./ListOrder.css";
 const ListOrder = () => {
   return (<>
-      <Button>Hola</Button>
+      <Button id="boton">Hola</Button>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
