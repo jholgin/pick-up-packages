@@ -7,7 +7,7 @@ import ListOrder from "../pages/Orders/ListOrders/ListOrder";
 import RegisterUser from "../pages/Register/RegisterUser";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import PublicRoutes from "./PublicRoutes/PublicRoutes";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Layout = () => {
   return (
     <>
