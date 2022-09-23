@@ -5,8 +5,7 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import "./ListOrder.css";
 const ListOrder = () => {
   return (<>
-      {/* <Button id="boton">Hola</Button> */}
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Pick Up Packages</Navbar.Brand>
           <Nav className="me-auto">
@@ -16,8 +15,9 @@ const ListOrder = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Breadcrumb>
-        <Breadcrumb.Item id="link_crear" href="#">Crear Orden</Breadcrumb.Item>
+      <h3 id="title">Gestión de Paquetes - Listado de Órdenes</h3>
+      <Breadcrumb id="link_crear">
+        <Breadcrumb.Item href="#">Crear Orden</Breadcrumb.Item>
       </Breadcrumb>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
@@ -32,46 +32,70 @@ const ListOrder = () => {
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">1</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Santa Marta</td>
+              <td>Calle 1 # 2 - 3</td>
+              <td>Guardado</td>
             </tr>
             <tr>
-              <td>2</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">2</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Barranquilla</td>
+              <td>Calle 4 # 5 - 6</td>
+              <td>Cancelado</td>
             </tr>
             <tr>
-              <td>3</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">3</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Cartagena</td>
+              <td>Calle 7 # 8 - 9</td>
+              <td>Cumplido</td>
             </tr>
             <tr>
-              <td>4</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">4</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Medellín</td>
+              <td>Calle 10 # 11 - 12</td>
+              <td>Cancelado</td>
             </tr>
             <tr>
-              <td>5</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">5</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Bogotá</td>
+              <td>Calle 13 # 14 - 16</td>
+              <td>Cumplido</td>
             </tr>
             <tr>
-              <td>6</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
+              <td>
+                <Breadcrumb>
+                  <Breadcrumb.Item className="link_servicio" href="#">6</Breadcrumb.Item>
+                </Breadcrumb>
+              </td>
+              <td>01/21/2021</td>
+              <td>Cali</td>
+              <td>Calle 17 # 18 - 19</td>
+              <td>Cumplido</td>
             </tr>
           </tbody>
         </table>
