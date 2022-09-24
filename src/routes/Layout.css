@@ -1,0 +1,11 @@
+/* ------ CSS generales ------ */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+    --second-backgrund: #353E4A;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

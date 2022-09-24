@@ -1,0 +1,18 @@
+.content-form-login {
+    background-color: white;
+    position: relative;            
+    align-self: center;
+    justify-self: center;         
+    width: 80%;        
+    padding: 15pt;
+}
+.user-circle {
+    font-size: 50pt;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15pt;
+}
+.form-login {
+    display: grid;
+    justify-content: center;      
+}
