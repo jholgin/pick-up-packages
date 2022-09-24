@@ -1,0 +1,22 @@
+#boton{
+   background-color: blueviolet;
+}
+
+#link_crear{
+   padding: 20px;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+}
+
+.link_servicio{
+   padding-left: 35px;
+}
+
+.table-responsive{
+   padding:10px;
+}
+
+#title{
+   padding: 20px;
+}
