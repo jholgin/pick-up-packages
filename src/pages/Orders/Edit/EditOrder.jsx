@@ -1,21 +1,9 @@
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import NavigationBar from "../../../components/NavBarComponent/NavBarComponent";
 
 const EditOrder = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Pick Up Packages</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/home">Login</Nav.Link>
-            <Nav.Link href="/order/list">Órdenes</Nav.Link>
-            <Nav.Link href="/order/create">Crear orden</Nav.Link>
-            <Nav.Link href="/order/edit">Edit orden</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <NavigationBar />
       <div>
         <div class="container py-5 px-5">
           <form>

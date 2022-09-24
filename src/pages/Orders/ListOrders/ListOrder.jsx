@@ -1,22 +1,11 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import NavigationBar from "../../../components/NavBarComponent/NavBarComponent";
 import "./ListOrder.css";
+
 const ListOrder = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Pick Up Packages</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/home">Login</Nav.Link>
-            <Nav.Link href="/order/list">Órdenes</Nav.Link>
-            <Nav.Link href="/order/create">Crear orden</Nav.Link>
-            <Nav.Link href="/order/edit">Edit orden</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <NavigationBar />
       <h3 id="title">Gestión de Paquetes - Listado de Órdenes</h3>
       <Breadcrumb id="link_crear">
         <Breadcrumb.Item href="#">Crear Orden</Breadcrumb.Item>
