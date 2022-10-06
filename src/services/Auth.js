@@ -13,12 +13,35 @@ export class AuthServices {
 
       const json = await response.json();
       if (response.ok) {
-        Promise.resolve(json);
+        return Promise.resolve(json);
       } else {
-        Promise.reject(json);
+        return Promise.reject(json);
       }
     } catch (error) {
-      Promise.reject(error);
+      return Promise.reject(error);
+    }
+  }
+
+  async auth(payload) {
+    try {
+      const url = `${process.env.REACT_APP_API_HOST}/auth/login`;
+
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const json = await response.json();
+      if (response.ok) {
+        return Promise.resolve(json);
+      } else {
+        return Promise.reject(json);
+      }
+    } catch (error) {
+      return Promise.reject(error);
     }
   }
 }

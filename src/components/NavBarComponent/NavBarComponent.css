@@ -1,0 +1,12 @@
+.content-nav-item {
+    display: grid !important;
+    grid-auto-flow: column;
+    width: 100%;
+    margin-top: 0px !important;
+}
+.subcontent-nav-item {
+    display: flex
+}
+.nav-item-end {
+    justify-self: flex-end;
+}

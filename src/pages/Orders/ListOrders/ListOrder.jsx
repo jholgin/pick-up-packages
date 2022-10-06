@@ -1,14 +1,38 @@
+import moment from "moment";
+import { useState } from "react";
+import { useEffect } from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import { useNavigate } from "react-router-dom";
 import NavigationBar from "../../../components/NavBarComponent/NavBarComponent";
+import { OrderServices } from "../../../services/Order";
 import "./ListOrder.css";
 
+// Servicios
+const orderServices = new OrderServices();
+
 const ListOrder = () => {
+  const [orders, setOrders] = useState([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
+
+  const loadOrders = async () => {
+    const info = await orderServices.getOrders();
+
+    setOrders(info?.orders);
+  };
+
   return (
     <>
       <NavigationBar />
       <h3 id="title">Gestión de Paquetes - Listado de Órdenes</h3>
       <Breadcrumb id="link_crear">
-        <Breadcrumb.Item href="#">Crear Orden</Breadcrumb.Item>
+        <Breadcrumb.Item href="#" onClick={() => navigate("/order/create")}>
+          Crear Orden
+        </Breadcrumb.Item>
       </Breadcrumb>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
@@ -16,90 +40,29 @@ const ListOrder = () => {
             <tr>
               <th scope="col"># Servicio</th>
               <th scope="col">Fecha</th>
+              <th scope="col">Estado</th>
               <th scope="col">Ciudad Entrega</th>
               <th scope="col">Dirección Entrega</th>
-              <th scope="col">Estado</th>
+              <th scope="col">Nombre destinatario</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    1
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Santa Marta</td>
-              <td>Calle 1 # 2 - 3</td>
-              <td>Guardado</td>
-            </tr>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    2
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Barranquilla</td>
-              <td>Calle 4 # 5 - 6</td>
-              <td>Cancelado</td>
-            </tr>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    3
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Cartagena</td>
-              <td>Calle 7 # 8 - 9</td>
-              <td>Cumplido</td>
-            </tr>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    4
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Medellín</td>
-              <td>Calle 10 # 11 - 12</td>
-              <td>Cancelado</td>
-            </tr>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    5
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Bogotá</td>
-              <td>Calle 13 # 14 - 16</td>
-              <td>Cumplido</td>
-            </tr>
-            <tr>
-              <td>
-                <Breadcrumb>
-                  <Breadcrumb.Item className="link_servicio" href="#">
-                    6
-                  </Breadcrumb.Item>
-                </Breadcrumb>
-              </td>
-              <td>01/21/2021</td>
-              <td>Cali</td>
-              <td>Calle 17 # 18 - 19</td>
-              <td>Cumplido</td>
-            </tr>
+            {orders?.map((order, index) => (
+              <tr key={`order-${index}`}>
+                <td>
+                  <Breadcrumb>
+                    <Breadcrumb.Item className="link_servicio" href="#">
+                      {index}
+                    </Breadcrumb.Item>
+                  </Breadcrumb>
+                </td>
+                <td>{moment(order?.fecha).format("YYYY-MM-DD")}</td>
+                <td>{order?.estado}</td>
+                <td>{order?.ciudad_entrega}</td>
+                <td>{order?.direccion_entrega}</td>
+                <td>{order?.nombre_destinatario}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
