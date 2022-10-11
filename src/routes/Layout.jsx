@@ -47,6 +47,7 @@ const Layout = () => {
               >
                 <Route path="/order/list" element={<ListOrder />} />
                 <Route path="/order/create" element={<CreateOrder />} />
+                <Route path="/order/edit/:orderId" element={<EditOrder />} />
                 <Route path="/order/edit" element={<EditOrder />} />
               </Route>
 
