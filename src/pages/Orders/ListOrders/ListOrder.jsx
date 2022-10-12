@@ -1,16 +1,18 @@
 import moment from "moment";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState,useContext ,useEffect} from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../../../components/NavBarComponent/NavBarComponent";
 import { OrderServices } from "../../../services/Order";
+import { AppContext } from "../../../context/AppContext";
 import "./ListOrder.css";
 
 // Servicios
 const orderServices = new OrderServices();
 
 const ListOrder = () => {
+  const { user } = useContext(AppContext);
+  console.log(user.id)
   const [orders, setOrders] = useState([]);
 
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const ListOrder = () => {
   }, []);
 
   const loadOrders = async () => {
-    const info = await orderServices.getOrders();
+    const info = await orderServices.getOrdersByUserId(user?.id);
 
     setOrders(info?.orders);
   };
@@ -51,7 +53,7 @@ const ListOrder = () => {
               <tr key={`order-${index}`}>
                 <td>
                   <Breadcrumb>
-                    <Breadcrumb.Item className="link_servicio" href="#">
+                    <Breadcrumb.Item className="link_servicio" onClick = {() => navigate(`/order/edit/${order.id}`)}>
                       {index}
                     </Breadcrumb.Item>
                   </Breadcrumb>

@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { AppContext } from "../../context/AppContext";
 
+import { OrderServices } from "../../services/Order";
+const orderServices = new OrderServices();
 const CreateForm = () => {
   const { user } = useContext(AppContext);
 
@@ -40,31 +42,22 @@ const CreateForm = () => {
   const orderSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_HOST}/orders/create`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userID: user?.id,
-            fecha: values.fecha + "T" + values.hora + ":00.00Z",
-            largo: values.largo,
-            ancho: values.ancho,
-            alto: values.alto,
-            peso: values.peso,
-            direccion_recogida: values.direccion_recogida,
-            ciudad_recogida: values.ciudad_recogida,
-            nombre_destinatario: values.nombre_destinatario,
-            cedula: values.cedula,
-            direccion_entrega: values.direccion_entrega,
-            ciudad_entrega: values.ciudad_entrega,
-          }),
-        }
-      );
-
-      const responseData = await response.json();
+      const responseData  = await orderServices.createOrder(
+        JSON.stringify({
+          userID: user?.id,
+          fecha: values.fecha + "T" + values.hora + ":00.00Z",
+          largo: values.largo,
+          ancho: values.ancho,
+          alto: values.alto,
+          peso: values.peso,
+          direccion_recogida: values.direccion_recogida,
+          ciudad_recogida: values.ciudad_recogida,
+          nombre_destinatario: values.nombre_destinatario,
+          cedula: values.cedula,
+          direccion_entrega: values.direccion_entrega,
+          ciudad_entrega: values.ciudad_entrega,
+        })
+      )
       console.log(responseData);
 
       navigate("/order/list");
